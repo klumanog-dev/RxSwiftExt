@@ -17,6 +17,7 @@ public extension Reactive where Base: UIViewPropertyAnimator {
     /**
      Bindable extension for `fractionComplete` property.
      */
+    @MainActor
     var fractionComplete: Binder<CGFloat> {
         return Binder(base) { propertyAnimator, fractionComplete in
             propertyAnimator.fractionComplete = fractionComplete
@@ -29,6 +30,7 @@ public extension Reactive where Base: UIViewPropertyAnimator {
     /// - Parameter afterDelay: the delay to apply to the animation start
     ///
     /// - Returns: Completable
+    @MainActor
     func animate(afterDelay delay: TimeInterval = 0) -> Completable {
         return Completable.create { [base] completable in
             base.addCompletion { position in

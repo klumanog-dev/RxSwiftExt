@@ -17,6 +17,7 @@ public extension Reactive where Base: UIScrollView {
      - parameter offset: A threshhold indicating the bottom of the UIScrollView.
      - returns: ControlEvent that emits when the bottom of the base UIScrollView is reached.
      */
+    @MainActor
     func reachedBottom(offset: CGFloat = 0.0) -> ControlEvent<Void> {
         let source = contentOffset.map { contentOffset in
             let visibleHeight = self.base.frame.height - self.base.contentInset.top - self.base.contentInset.bottom
